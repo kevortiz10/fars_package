@@ -1,0 +1,29 @@
+Package: FarsKevin
+Title: Fars Functions from Kevin
+Version: 0.1.0
+Authors@R:
+    c(person(given = "Kevin",
+             family = "Ortiz",
+             role = c("aut", "cre"),
+             email = "ortizgonzalezkevin@gmail.com"))
+Maintainer: Kevin Ortiz <ortizgonzalezkevin@gmail.com>
+Description:Contains five functions working with the data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
+Imports: 
+    dplyr,
+    readr,
+    tidyr,
+    graphics,
+    maps,
+    base,
+    roxygen2
+Depends: 
+    R (>= 2.10)
+RoxygenNote: 7.1.1

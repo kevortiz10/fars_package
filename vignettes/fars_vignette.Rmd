@@ -1,0 +1,93 @@
+---
+title: "Using Fars functions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fars_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(FarsKevin)
+```
+
+# $fars$ $read$
+
+This function shows a quick view of your data in an object of class tibble, according to a specified CSV filename. For example,
+
+```{r fars_read1, eval=F}
+fars_read("accident_2013.csv.bz2")
+```
+
+There will be errors if the filename is absent, there are no quotation marks in the filename argument or the file does not exist. The following line will fail:
+
+```{r fars_read2, eval=F}
+fars_read(accident_2018.csv.bz2)
+```
+
+
+# $make$ $filename$
+
+This simple function makes a filename for the data associated to the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, according to a specified year. An example:
+
+```{r make_filename1, eval=F}
+make_filename(2015)
+```
+
+There will be errors if the year argument is absent or if the year is referenced to a non-existing object in the environment. If there is a character string in the year argument, R will introduce NAs by coercion. For example,
+
+```{r make_filename2, eval = F}
+make_filename("car")
+```
+
+
+# $fars$ $read$ $years$
+
+This function selects the month and year from each record in the files associated to the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, given one or more years:
+
+```{r fars_read_years1, eval=F}
+fars_read_years(c(2013,2014))
+```
+
+There will be errors if the year is absent or the if the year is referenced to a non-existing object in the environment. There are warnings when the year is invalid (no existing filename with that year). The following lines of code will give you a warning:
+
+```{r fars_read_years2, eval = F}
+fars_read_years(c(2013,2014,1))
+```
+
+
+# $fars$ $summarize$ $years$
+
+This function summarizes the number of times the months appear for a specified vector of years. For example,
+
+```{r fars_summarize_years1, eval=F}
+fars_summarize_years(c(2013,2014,2015))
+```
+
+There will be errors if the year is absent or the if the year is referenced to a non-existing object in the environment. There are warnings when the year or years are invalid (no existing filename with that year). If you run the following line, you will get an error:
+
+```{r fars_summarize_years2, eval = F}
+fars_summarize_years()
+```
+
+
+# $fars$ $map$ $state$
+
+This function makes a plot of the fatality traffic for a specified state of  the United States, according to the year established by the user. For example,
+
+```{r fars_map_state1, eval=F}
+fars_map_state(39, 2014)
+```
+
+There will be errors if any of the arguments are absent or if there are no numeric values for the arguments. An example of this:
+
+```{r fars_map_state2, eval = F}
+fars_map_state(A, 2014)
+```
